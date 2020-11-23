@@ -2,6 +2,8 @@
 
 const express = require("express")
 const Database = require("./database/Database")
+const CategoryRoutes = require("./Category/routes")
+const ArticleRoutes = require("./Article/routes")
 
 /** configs */
 
@@ -21,10 +23,9 @@ Database.authenticate()
 
 /** routes */
 
-app.get("/", (req, res) => {
+app.use("/", CategoryRoutes)
+app.use("/artigos", ArticleRoutes)
 
-    res.render("index")
-})
 
 /** server */
 
