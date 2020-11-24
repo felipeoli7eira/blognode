@@ -9,7 +9,16 @@ const route = express.Router()
 /** routes */
 route.get("/", (req, res) => {
 
-    res.send(`<h1>Todas as categorias</h1>`)
+    Category.findAll()
+    .then((categories) => {
+
+        res.render("app/categories/all.ejs", { categories })
+    })
+    .catch((error) => {
+
+        console.log("findAllCategoriesError: " + error)
+        res.render("<h1>Estamos com um erro aqui...</h1>")
+    })
 })
 
 route.get("/nova", (req, res) => {

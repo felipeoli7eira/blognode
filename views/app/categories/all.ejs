@@ -1,0 +1,28 @@
+<%- include("./../../html/open.ejs") %>
+
+<%- include("./../../components/navbar.ejs") %>
+
+    <div class="container">
+        <table class="table mt-5">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">nome</th>
+                    <th scope="col">slug</th>
+                    <th scope="col">opção</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% categories.forEach((category) => { %>
+                    <tr>
+                        <th scope="row"><%= category.id %></th>
+                        <td><%= category.title %></td>
+                        <td><%= category.slug %></td>
+                        <td>...</td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+
+<%- include("./../../html/close.ejs") %>

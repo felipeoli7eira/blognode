@@ -5,6 +5,11 @@
     font-family: 'Quicksand', sans-serif;
 }
 
+body
+{
+    background-color: #f9f9f9;
+}
+
 a.btn, input[type=text], textarea, button.btn
 {
     border-radius: 2px !important;
