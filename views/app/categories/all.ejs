@@ -24,8 +24,11 @@
                         <td><%= category.slug %></td>
                         <td>
                             <nav>
-                                <a href="/app/categorias/deletar" class="btn btn-danger">
-                                    <img src="/img/delete-icon.svg" width="15px" alt="Deletar">
+                                <a href="/app/categorias/deletar/<%= category.id %>" data-categname="<%= category.title %>" class="btn btn-danger btn-delete">
+                                <img src="/img/delete-icon.svg" width="15px" alt="Deletar" onclick="(event) => event.stopPropagation()">
+                                </a>
+                                <a href="/app/categorias/editar/<%= category.id %>" class="btn btn-info">
+                                    <img src="/img/edit-icon.svg" width="15px" alt="Deletar">
                                 </a>
                             </nav>
                         </td>
@@ -36,3 +39,39 @@
     </div>
 
 <%- include("./../../html/close.ejs") %>
+
+<script>
+
+    let deleteButtons = document.querySelectorAll(".btn-delete")
+
+    Array.from(deleteButtons).forEach(
+        (button) => {
+            button.addEventListener ("click", (event) => {
+
+                event.preventDefault()
+                let catName
+                let href
+
+                if (event.target.localName === "img")
+                {
+                    catName = event.target.parentElement.dataset.categname
+                    href = event.target.parentElement.href
+                }
+                else
+                {
+                    catName = event.target.dataset.categname
+                    href = event.target.href
+                }
+
+                const confirm = window.confirm("Deseja realmente deletar a categoria \"" + catName + "\"?")
+
+                if (confirm)
+                {
+                    window.location.href = href
+                    return
+                }
+            })
+        }
+    )
+
+</script>
