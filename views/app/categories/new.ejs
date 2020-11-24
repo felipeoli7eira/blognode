@@ -1,0 +1,39 @@
+<%- include("./../../html/open.ejs") %>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<a class="navbar-brand" href="#">BlogNode</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-app">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <!-- <div class="collapse navbar-collapse" id="navbar-app">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Features</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Pricing</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+            </li>
+        </ul>
+    </div> -->
+</nav>
+
+<div class="container pt-5">
+    <div class="row">
+        <div class="col col-12 col-md-6 col-lg-6 mx-auto">
+            <form action="" method="post">
+                <h4 class="h4 h4-responsive text-black-50 mb-5">Cadastro de nova categoria</h4>
+                <p class="text-black-50">Digite o nome da categoria e clique em "pronto"</p>
+                <input type="text" name="categname" class="mb-2 form-control" autofocus required placeholder="Digite aqui...">
+                <button class="btn btn-success btn-block">pronto</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<%- include("./../../html/close.ejs") %>

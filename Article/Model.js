@@ -19,4 +19,8 @@ const Article = Database.define(
     }
 )
 
+Article.sync( {force: false} )
+.then(() => console.log("\nArticleSync...\n"))
+.catch((error) => console.log("ArticleErrorSync: " + error))
+
 module.exports = Article
