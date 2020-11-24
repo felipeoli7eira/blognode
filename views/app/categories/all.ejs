@@ -3,7 +3,11 @@
 <%- include("./../../components/navbar.ejs") %>
 
     <div class="container">
-        <table class="table mt-5">
+
+        <nav class="mt-5 mb-4">
+            <a href="/app/categorias/nova" class="btn btn-success">cadastrar nova</a>
+        </nav>
+        <table class="table">
             <thead class="thead-dark">
                 <tr>
                     <th scope="col">#</th>
@@ -18,7 +22,13 @@
                         <th scope="row"><%= category.id %></th>
                         <td><%= category.title %></td>
                         <td><%= category.slug %></td>
-                        <td>...</td>
+                        <td>
+                            <nav>
+                                <a href="/app/categorias/deletar" class="btn btn-danger">
+                                    <img src="/img/delete-icon.svg" width="15px" alt="Deletar">
+                                </a>
+                            </nav>
+                        </td>
                     </tr>
                 <% }) %>
             </tbody>
