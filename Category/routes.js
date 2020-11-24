@@ -74,8 +74,31 @@ route.get("/editar/:id", (req, res) => {
     }
 })
 
-route.get("/editar/:id", (req, res) => {
-    
+route.post("/editar/", (req, res) => {
+
+    const {id, categname} = req.body
+    const slug = slugify( categname )
+
+    Category.update(
+        {
+            title: categname,
+            slug
+        },
+        {
+            where: { id }
+        }
+    )
+    .then(() => {
+
+        res.redirect("/app/categorias")
+    })
+    .catch((error) => {
+
+        console.log("categoryUpdateError: " + error)
+        res.send("<h1>Erro ao atualizer a categoria</h1>")
+        return false
+    })
+
 })
 
 route.get("/nova", (req, res) => {

@@ -12,7 +12,7 @@ route.get("/", (req, res) => {
 
 route.get("/novo", (req, res) => {
 
-    res.send("<h1>Novo artigo</h1>")
+    res.render("app/articles/new.ejs")
 })
 
 /** module */

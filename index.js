@@ -27,7 +27,7 @@ Database.authenticate()
 /** routes */
 
 app.use("/app/categorias", CategoryRoutes)
-app.use("/artigos", ArticleRoutes)
+app.use("/app/artigos", ArticleRoutes)
 
 
 /** server */

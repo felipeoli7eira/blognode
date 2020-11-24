@@ -1,0 +1,31 @@
+<%- include("./../../html/open.ejs") %>
+
+<%- include("./../../components/navbar.ejs") %>
+
+<div class="container pt-5">
+    <div class="row">
+        <div class="col col-12 col-md-6 col-lg-6 mx-auto mb-5">
+            <form action="/app/categorias/nova" method="post">
+                <h4 class="h4 h4-responsive text-black-50 mb-5">Cadastro de artigo</h4>
+                <p class="text-black-50">Nome do artigo</p>
+                <input type="text" name="categname" class="mb-2 form-control" autofocus required placeholder="Digite aqui o nome">
+                <textarea name="body" id="textarea-article" cols="30" rows="10" class=""></textarea>
+                <button class="btn btn-success btn-block mt-3">pronto</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="/libs/tinymce/js/tinymce/tinymce.min.js"></script>
+<script>
+    tinymce.init(
+        {
+            selector: "#textarea-article",
+            plugins: [
+                "advlist autolink link image lists print preview hr searchreplace wordcount fullscreen insertdatetime media save table paste emoticons"
+            ]
+        }
+    )
+</script>
+
+<%- include("./../../html/close.ejs") %>
