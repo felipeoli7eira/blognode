@@ -1,0 +1,30 @@
+<%- include("./../../html/open.ejs") %>
+
+<%- include("./../../components/navbar.ejs") %>
+
+    <div class="container">
+
+        <nav class="mt-5 mb-4">
+            <a href="/app/artigos/novo" class="btn btn-success">criar novo artigo</a>
+        </nav>
+
+        <div class="row">
+            <% articles.forEach((article) => { %>
+                <div class="card col col-12 col-sm-4 col-md-4 col-lg-4">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <%= article.title %>
+                        </h5>
+                        <h6 class="card-subtitle mb-2 text-muted">
+                            <%= article.category.title %>
+                        </h6>
+                        <p class="card-text"></p>
+                        <a href="#" class="card-link">Ir para</a>
+                        <!-- <a href="#" class="card-link">Another link</a> -->
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+    </div>
+
+<%- include("./../../html/close.ejs") %>

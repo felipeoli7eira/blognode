@@ -10,7 +10,19 @@ const route = express.Router()
 /** routes */
 route.get("/", (req, res) => {
 
-    res.send("<h1>todas os artigos</h1>")
+    Article.findAll( { include: [ {model: Category} ] } )
+    .then((articles) => {
+
+        console.log(articles)
+
+        res.render("app/articles/all.ejs", {articles})
+    })
+    .catch((error) => {
+
+        console.log("articlesFindAllError: " + error)
+        res.redirect("/app/articles")
+    })
+
 })
 
 route.get("/novo", (req, res) => {
