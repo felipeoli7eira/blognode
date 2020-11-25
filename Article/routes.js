@@ -13,8 +13,6 @@ route.get("/", (req, res) => {
     Article.findAll( { include: [ {model: Category} ] } )
     .then((articles) => {
 
-        console.log(articles)
-
         res.render("app/articles/all.ejs", {articles})
     })
     .catch((error) => {
@@ -52,6 +50,24 @@ route.post("/novo", (req, res) => {
             categoryId: category
         }
     )
+    .then(() => {
+
+        res.redirect("/app/artigos")
+    })
+    .catch((error) => {
+
+        res.send("<h1>Erro ao tentar criar um novo artigo</h1>")
+    })
+})
+
+route.get("/deletar/:id", (req, res) => {
+
+    // const { title, body, category } = req.body
+    // const slug = slugify( title )
+
+    const {id} = req.params
+
+    Article.destroy( { where: {id} } )
     .then(() => {
 
         res.redirect("/app/artigos")

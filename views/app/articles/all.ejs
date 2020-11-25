@@ -16,15 +16,65 @@
                             <%= article.title %>
                         </h5>
                         <h6 class="card-subtitle mb-2 text-muted">
-                            <%= article.category.title %>
+                            <nav class="mb-3">
+                                <a href="/app/artigos/<%= article.category.slug %>" class="card-link">
+                                    <%= article.category.title %>
+                                </a>
+                            </nav>
                         </h6>
-                        <p class="card-text"></p>
-                        <a href="#" class="card-link">Ir para</a>
+                        <!-- <p class="card-text"></p> -->
+                        <nav>
+                            <a href="#" class="btn btn-success">
+                                <img src="/img/eye-icon.svg" alt="Ver" width="15px">
+                            </a>
+                            <a href="#" class="btn btn-info">
+                                <img src="/img/edit-icon.svg" alt="Ver" width="15px">
+                            </a>
+                            <a href="/app/artigos/deletar/<%= article.id %>" data-arttitle="<%= article.title %>" class="btn btn-danger btn-delete">
+                                <img src="/img/delete-icon.svg" alt="Ver" width="15px">
+                            </a>
+                        </nav>
                         <!-- <a href="#" class="card-link">Another link</a> -->
                     </div>
                 </div>
             <% }) %>
         </div>
     </div>
+
+    <script>
+
+        let deleteButtons = document.querySelectorAll(".btn-delete")
+    
+        Array.from(deleteButtons).forEach(
+            (button) => {
+                button.addEventListener ("click", (event) => {
+    
+                    event.preventDefault()
+                    let artTitle
+                    let href
+    
+                    if (event.target.localName === "img")
+                    {
+                        artTitle = event.target.parentElement.dataset.arttitle
+                        href = event.target.parentElement.href
+                    }
+                    else
+                    {
+                        artTitle = event.target.dataset.arttitle
+                        href = event.target.href
+                    }
+    
+                    const confirm = window.confirm("Deseja realmente deletar o artigo \"" + artTitle + "\"?")
+    
+                    if (confirm)
+                    {
+                        window.location.href = href
+                        return
+                    }
+                })
+            }
+        )
+    
+    </script>
 
 <%- include("./../../html/close.ejs") %>
