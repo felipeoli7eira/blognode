@@ -1,5 +1,12 @@
 <%- include("./html/open.ejs") %>
 
-    <h1>Welcome</h1>
-
+    <nav>
+        <ul>
+            <% articles.forEach(article => { %>
+                <a href="/artigo/<%= article.slug %>">
+                    <li> <%= article.title %> </li>
+                </a>
+            <% }) %>
+        </ul>
+    </nav>
 <%- include("./html/close.ejs") %>

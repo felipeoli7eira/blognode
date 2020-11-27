@@ -29,6 +29,33 @@ Database.authenticate()
 app.use("/app/categorias", CategoryRoutes)
 app.use("/app/artigos", ArticleRoutes)
 
+app.get("/", (req, res) => {
+
+    Article.findAll( { order: [ ["id", "DESC"] ] } )
+    .then((articles) => {
+
+        res.render("index", {articles})
+    })
+    .catch((error) => {
+
+        res.send("<h1>Erro</h1>")
+    })
+})
+
+app.get("/artigo/:slug", (req, res) => {
+
+    const {slug} = req.params
+
+    Article.findOne({ where: { slug } })
+    .then((article) => {
+
+        res.send(article.body)
+    }).catch(error => {
+
+        res.send("<h1>Erro</h1>")
+    })
+})
+
 
 /** server */
 
